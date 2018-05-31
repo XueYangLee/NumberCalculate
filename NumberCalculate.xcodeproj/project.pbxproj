@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F152AA6B20BFCC4500EE09EC /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F152AA6920BFCC4500EE09EC /* TableViewCell.m */; };
+		F152AA6C20BFCC4500EE09EC /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F152AA6A20BFCC4500EE09EC /* TableViewCell.xib */; };
 		F18AA46220BCE9450012D972 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA46120BCE9450012D972 /* AppDelegate.m */; };
 		F18AA46520BCE9450012D972 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA46420BCE9450012D972 /* ViewController.m */; };
 		F18AA46820BCE9450012D972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18AA46620BCE9450012D972 /* Main.storyboard */; };
@@ -15,6 +17,11 @@
 		F18AA47020BCE9460012D972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA46F20BCE9460012D972 /* main.m */; };
 		F18AA47A20BCE9460012D972 /* NumberCalculateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA47920BCE9460012D972 /* NumberCalculateTests.m */; };
 		F18AA48520BCE9460012D972 /* NumberCalculateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA48420BCE9460012D972 /* NumberCalculateUITests.m */; };
+		F18AA49520BCEAC50012D972 /* NumberCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = F18AA49420BCEAC50012D972 /* NumberCalculate.m */; };
+		F18AA49920BD4AB40012D972 /* btn_num_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F18AA49720BD4AB40012D972 /* btn_num_add@2x.png */; };
+		F18AA49A20BD4AB40012D972 /* btn_num_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F18AA49820BD4AB40012D972 /* btn_num_add@3x.png */; };
+		F18AA49D20BD4ABD0012D972 /* btn_num_minus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F18AA49B20BD4ABD0012D972 /* btn_num_minus@3x.png */; };
+		F18AA49E20BD4ABD0012D972 /* btn_num_minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F18AA49C20BD4ABD0012D972 /* btn_num_minus@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F152AA6820BFCC4500EE09EC /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		F152AA6920BFCC4500EE09EC /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		F152AA6A20BFCC4500EE09EC /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		F18AA45D20BCE9450012D972 /* NumberCalculate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberCalculate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18AA46020BCE9450012D972 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F18AA46120BCE9450012D972 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +61,12 @@
 		F18AA48020BCE9460012D972 /* NumberCalculateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberCalculateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18AA48420BCE9460012D972 /* NumberCalculateUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumberCalculateUITests.m; sourceTree = "<group>"; };
 		F18AA48620BCE9460012D972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F18AA49320BCEAC50012D972 /* NumberCalculate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumberCalculate.h; sourceTree = "<group>"; };
+		F18AA49420BCEAC50012D972 /* NumberCalculate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumberCalculate.m; sourceTree = "<group>"; };
+		F18AA49720BD4AB40012D972 /* btn_num_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_num_add@2x.png"; sourceTree = "<group>"; };
+		F18AA49820BD4AB40012D972 /* btn_num_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_num_add@3x.png"; sourceTree = "<group>"; };
+		F18AA49B20BD4ABD0012D972 /* btn_num_minus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_num_minus@3x.png"; sourceTree = "<group>"; };
+		F18AA49C20BD4ABD0012D972 /* btn_num_minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_num_minus@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +121,10 @@
 				F18AA46120BCE9450012D972 /* AppDelegate.m */,
 				F18AA46320BCE9450012D972 /* ViewController.h */,
 				F18AA46420BCE9450012D972 /* ViewController.m */,
+				F152AA6820BFCC4500EE09EC /* TableViewCell.h */,
+				F152AA6920BFCC4500EE09EC /* TableViewCell.m */,
+				F152AA6A20BFCC4500EE09EC /* TableViewCell.xib */,
+				F18AA49220BCE9B40012D972 /* NumberCalculate */,
 				F18AA46620BCE9450012D972 /* Main.storyboard */,
 				F18AA46920BCE9460012D972 /* Assets.xcassets */,
 				F18AA46B20BCE9460012D972 /* LaunchScreen.storyboard */,
@@ -130,6 +150,27 @@
 				F18AA48620BCE9460012D972 /* Info.plist */,
 			);
 			path = NumberCalculateUITests;
+			sourceTree = "<group>";
+		};
+		F18AA49220BCE9B40012D972 /* NumberCalculate */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA49620BD4AA90012D972 /* resource */,
+				F18AA49320BCEAC50012D972 /* NumberCalculate.h */,
+				F18AA49420BCEAC50012D972 /* NumberCalculate.m */,
+			);
+			path = NumberCalculate;
+			sourceTree = "<group>";
+		};
+		F18AA49620BD4AA90012D972 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA49720BD4AB40012D972 /* btn_num_add@2x.png */,
+				F18AA49820BD4AB40012D972 /* btn_num_add@3x.png */,
+				F18AA49C20BD4ABD0012D972 /* btn_num_minus@2x.png */,
+				F18AA49B20BD4ABD0012D972 /* btn_num_minus@3x.png */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,8 +276,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18AA49E20BD4ABD0012D972 /* btn_num_minus@2x.png in Resources */,
 				F18AA46D20BCE9460012D972 /* LaunchScreen.storyboard in Resources */,
 				F18AA46A20BCE9460012D972 /* Assets.xcassets in Resources */,
+				F18AA49D20BD4ABD0012D972 /* btn_num_minus@3x.png in Resources */,
+				F18AA49A20BD4AB40012D972 /* btn_num_add@3x.png in Resources */,
+				F152AA6C20BFCC4500EE09EC /* TableViewCell.xib in Resources */,
+				F18AA49920BD4AB40012D972 /* btn_num_add@2x.png in Resources */,
 				F18AA46820BCE9450012D972 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +311,8 @@
 				F18AA46520BCE9450012D972 /* ViewController.m in Sources */,
 				F18AA47020BCE9460012D972 /* main.m in Sources */,
 				F18AA46220BCE9450012D972 /* AppDelegate.m in Sources */,
+				F152AA6B20BFCC4500EE09EC /* TableViewCell.m in Sources */,
+				F18AA49520BCEAC50012D972 /* NumberCalculate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

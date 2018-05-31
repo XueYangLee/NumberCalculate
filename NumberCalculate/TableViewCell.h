@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NumberCalculate.h"
 
-@interface TableViewCell : UITableViewCell
+@interface TableViewCell : UITableViewCell<NumberCalculateDelegate>
+
+@property (weak, nonatomic) IBOutlet NumberCalculate *numberCalculate;
 
 @end

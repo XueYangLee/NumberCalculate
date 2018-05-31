@@ -13,6 +13,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _numberCalculate.delegate=self;
+}
+
+- (void)resultNumber:(NSString *)number{
+    NSLog(@"%@>>>resultDelegate>>",number);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

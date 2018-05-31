@@ -33,5 +33,5 @@ NSLog(@"%@>>>resultDelegate>>",number);
 }
 ```
 
-参考目录下screen.gif
+![参考](https://github.com/XueYangLee/NumberCalculate/blob/master/screen.gif)
 

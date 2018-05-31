@@ -34,4 +34,3 @@ NSLog(@"%@>>>resultDelegate>>",number);
 ```
 
 ![参考](https://github.com/XueYangLee/NumberCalculate/blob/master/screen.gif)
-

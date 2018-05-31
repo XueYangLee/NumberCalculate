@@ -34,3 +34,4 @@ NSLog(@"%@>>>resultDelegate>>",number);
 ```
 
 参考目录下screen.gif
+/Users/singularity/Documents/控件集合/自打Demo/NumberCalculate/screen.gif

@@ -4,14 +4,17 @@
 
 主要参数 
 ```
-/** 初始显示值 不传默认显示0 */
+/** 初始显示值 不传默认显示0  建议必传*/
 @property (nonatomic, copy) NSString *baseNum;
 
 /** 数值增减基数（倍数增减） 默认1的倍数增减 */
-@property (nonatomic, copy) NSString *multipleNum;
+@property (nonatomic, assign) NSInteger multipleNum;
 
-/** 最小值是否为0  默认YES  为NO时最小值以multipleNum的设定为准 */
-@property (nonatomic, assign) BOOL minFormZero;
+/** 最小值 默认且最小为0*/
+@property (nonatomic, assign) NSInteger minNum;
+
+/** 最大值  默认99999 */
+@property (nonatomic, assign) NSInteger maxNum;
 ```
 当以上参数均不传的时候则为普通计数方式 从0开始以1的倍数加减
 

@@ -51,8 +51,8 @@
     [_addBtn removeFromSuperview];
     
     _isShake=YES;
-    _minFormZero=YES;
-    _multipleNum=@"1";
+    _multipleNum=1;
+    _minNum=0;
     _maxNum=defaultMax;
     
     CGFloat viewWidth=self.frame.size.width;
@@ -95,18 +95,23 @@
             _addBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
         }
     }
+    
+    if (_buttonColor) {
+        _reduceBtn.backgroundColor=_buttonColor;
+        _addBtn.backgroundColor=_buttonColor;
+    }
 }
 
 /** 减 */
 - (void)reduceNumberClick{
     [_numberText resignFirstResponder];
     
-    if ([_numberText.text integerValue]<= (_minFormZero?0:[_multipleNum integerValue])){
+    if ([_numberText.text integerValue]<= _minNum){
         [self shakeAnimation];
         return;
     }
     
-    _numberText.text=[NSString stringWithFormat:@"%ld",(long)[_numberText.text integerValue]-[_multipleNum integerValue]];
+    _numberText.text=[NSString stringWithFormat:@"%ld",(long)[_numberText.text integerValue]-_multipleNum];
     
     [self callBackResultNumber:_numberText.text];
 }
@@ -116,7 +121,7 @@
     [_numberText resignFirstResponder];
     
     if (_numberText.text.integerValue < _maxNum) {
-        _numberText.text=[NSString stringWithFormat:@"%ld",(long)[_numberText.text integerValue]+[_multipleNum integerValue]];
+        _numberText.text=[NSString stringWithFormat:@"%ld",(long)[_numberText.text integerValue]+_multipleNum];
     }else{
         [self shakeAnimation];
     }
@@ -126,15 +131,13 @@
 
 /** 数值变化 */
 - (void)textNumberChange:(UITextField *)textField{
-    if (_minFormZero && textField.text.integerValue < 0) {
-        textField.text = @"";
-    }
-    if (!_minFormZero && textField.text.integerValue <= 0) {
-        textField.text = @"";
+    if (textField.text.integerValue < _minNum) {
+        [self alertMessage:@"您输入的数量小于最小值，请重新输入"];
+        textField.text=@"";
     }
     
     if (textField.text.integerValue > _maxNum) {
-        [self alertMessage:@"您输入的数量溢出，请重新输入"];
+        [self alertMessage:@"您输入的数量大于最大值，请重新输入"];
         textField.text = @"";
         return;
     }
@@ -151,19 +154,10 @@
         textField.text = _recordNum;
     }
     
-    if (_minFormZero) {
-        if (textField.text.integerValue>=0) {
-            textField.text=[NSString stringWithFormat:@"%ld",(long)(textField.text.integerValue/_multipleNum.integerValue)*_multipleNum.integerValue];
-        }
+    if (textField.text.integerValue/_multipleNum == 0) {//输入小于基本倍数值 更改为倍数数值/若想在minNum为0的情况下输入小于倍数值的时候 更改为0 增加为0时的else内判断即可（如 倍数值为3，键入1 需求更改为0数值的情况下）
+        textField.text=[NSString stringWithFormat:@"%ld",_multipleNum];
     }else{
-        if (textField.text.integerValue!=0)
-        {
-            if (textField.text.integerValue/_multipleNum.integerValue == 0) {//输入小于基本值
-                textField.text=[NSString stringWithFormat:@"%@",_multipleNum];
-            }else{
-                textField.text=[NSString stringWithFormat:@"%ld",(long)(textField.text.integerValue/_multipleNum.integerValue)*_multipleNum.integerValue];
-            }
-        }
+        textField.text=[NSString stringWithFormat:@"%ld",(long)(textField.text.integerValue/_multipleNum)*_multipleNum];
     }
     
     [self callBackResultNumber:textField.text];
@@ -235,7 +229,7 @@
     [self setView];
 }
 
-- (void)setMultipleNum:(NSString *)multipleNum{
+- (void)setMultipleNum:(NSInteger)multipleNum{
     _multipleNum=multipleNum;
 }
 
@@ -249,16 +243,25 @@
     [self setView];
 }
 
+- (void)setButtonColor:(UIColor *)buttonColor{
+    _buttonColor=buttonColor;
+    [self setView];
+}
+
 - (void)setIsShake:(BOOL)isShake{
     _isShake=isShake;
 }
 
-- (void)setMinFormZero:(BOOL)minFormZero{
-    _minFormZero=minFormZero;
+- (void)setMinNum:(NSInteger)minNum{
+    if (minNum<0) {
+        minNum=0;
+    }
+    _minNum=minNum;
 }
 
 - (void)setMaxNum:(NSInteger)maxNum{
     _maxNum=maxNum;
 }
+
 
 @end

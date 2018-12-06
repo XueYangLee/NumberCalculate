@@ -29,8 +29,9 @@
     [self.view addSubview:remind];
     
     NumberCalculate *number=[[NumberCalculate alloc]initWithFrame:CGRectMake(50, 100, 150, 50)];
-    number.multipleNum=@"2";//数值增减基数（倍数增减） 默认1的倍数增减
-    number.minFormZero=NO;
+    number.baseNum=@"2";
+    number.multipleNum=2;//数值增减基数（倍数增减） 默认1的倍数增减
+    number.minNum=2;
     number.maxNum=10;//最大值
     [self.view addSubview:number];
     number.resultNumber = ^(NSString *number) {

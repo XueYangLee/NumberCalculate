@@ -33,6 +33,8 @@
 @property (nonatomic, assign) NSInteger maxNum;
 
 
+/** 数字框是否可以手动输入  默认可以 */
+@property (nonatomic, assign) BOOL canText;
 
 /** 是否隐藏边框线  默认显示 */
 @property (nonatomic, assign) BOOL hidBorder;

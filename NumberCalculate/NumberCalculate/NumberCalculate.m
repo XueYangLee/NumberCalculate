@@ -68,6 +68,7 @@
     }else{
         _numberText.text=@"0";
     }
+    _numberText.userInteractionEnabled=YES;
     _numberText.textColor=[UIColor darkGrayColor];
     _numberText.keyboardType = UIKeyboardTypeNumberPad;
     _numberText.textAlignment = NSTextAlignmentCenter;
@@ -231,6 +232,11 @@
 
 - (void)setMultipleNum:(NSInteger)multipleNum{
     _multipleNum=multipleNum;
+}
+
+- (void)setCanText:(BOOL)canText{
+    _canText=canText;
+    _numberText.userInteractionEnabled=_canText;
 }
 
 - (void)setHidBorder:(BOOL)hidBorder{

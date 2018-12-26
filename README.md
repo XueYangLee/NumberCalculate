@@ -15,8 +15,24 @@
 
 /** 最大值  默认99999 */
 @property (nonatomic, assign) NSInteger maxNum;
+
+
+
+/** 数字框是否可以手动输入  默认可以 */
+@property (nonatomic, assign) BOOL canText;
+
+/** 是否隐藏边框线  默认显示 */
+@property (nonatomic, assign) BOOL hidBorder;
+
+/** 边框线颜色 */
+@property (nonatomic, strong) UIColor *numborderColor;
+
+/** 加减按钮颜色 */
+@property (nonatomic, strong) UIColor *buttonColor;
+
+/** 是否开启晃动  默认开启 */
+@property (nonatomic, assign) BOOL isShake;
 ```
-当以上参数均不传的时候则为普通计数方式 从0开始以1的倍数加减
 
 回调方式block跟delegate两种方式可选
 ```

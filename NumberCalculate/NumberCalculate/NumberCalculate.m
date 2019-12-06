@@ -18,6 +18,11 @@
 /** 记录数值 */
 @property (nonatomic, copy) NSString *recordNum;
 
+/** 减号分割线 */
+@property (nonatomic, strong) UILabel *segmentReduce;
+/** 加号分割线 */
+@property (nonatomic, strong) UILabel *segmentAdd;
+
 @end
 
 #define numborderWidth 1
@@ -46,9 +51,7 @@
 }
 
 - (void)setView{
-    [_reduceBtn removeFromSuperview];
-    [_numberText removeFromSuperview];
-    [_addBtn removeFromSuperview];
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     _isShake=YES;
     _multipleNum=1;
@@ -63,17 +66,14 @@
     [self addSubview:_reduceBtn];
     
     _numberText=[[UITextField alloc]initWithFrame:CGRectMake(btnWidth-1, 0, viewWidth-btnWidth*2, btnWidth)];
-    if (_baseNum.length!=0) {
-        _numberText.text=_baseNum;
-    }else{
-        _numberText.text=@"0";
-    }
+    _numberText.text=[NSString stringWithFormat:@"%ld",_showNum];
     _numberText.userInteractionEnabled=YES;
     _numberText.textColor=[UIColor darkGrayColor];
+    _numberText.font=[UIFont systemFontOfSize:14];
     _numberText.keyboardType = UIKeyboardTypeNumberPad;
     _numberText.textAlignment = NSTextAlignmentCenter;
     _numberText.delegate=self;
-    [_numberText addTarget:self action:@selector(textNumberChange:) forControlEvents:UIControlEventEditingChanged];//
+    [_numberText addTarget:self action:@selector(textNumberChange:) forControlEvents:UIControlEventEditingChanged];
     [self addSubview:_numberText];
     
     _addBtn=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_numberText.frame)-1, 0, btnWidth, btnWidth)];
@@ -81,26 +81,18 @@
     [_addBtn addTarget:self action:@selector(addNumberClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addBtn];
     
-    if (!_hidBorder) {
-        _reduceBtn.layer.borderWidth=numborderWidth;
-        _numberText.layer.borderWidth=numborderWidth;
-        _addBtn.layer.borderWidth=numborderWidth;
-        
-        if (_numborderColor) {
-            _reduceBtn.layer.borderColor=_numborderColor.CGColor;
-            _numberText.layer.borderColor=_numborderColor.CGColor;
-            _addBtn.layer.borderColor=_numborderColor.CGColor;
-        }else{
-            _reduceBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
-            _numberText.layer.borderColor=[UIColor lightGrayColor].CGColor;
-            _addBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
-        }
-    }
+    _segmentReduce=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_reduceBtn.frame), (btnWidth/2)*1/3, 0.5, btnWidth-((btnWidth/2)*2/3))];
+    [self addSubview:_segmentReduce];
     
-    if (_buttonColor) {
-        _reduceBtn.backgroundColor=_buttonColor;
-        _addBtn.backgroundColor=_buttonColor;
-    }
+    _segmentAdd=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_numberText.frame), (btnWidth/2)*1/3, 0.5, btnWidth-((btnWidth/2)*2/3))];
+    [self addSubview:_segmentAdd];
+    
+    
+    _segmentReduce.backgroundColor=[UIColor lightGrayColor];
+    _segmentAdd.backgroundColor=[UIColor lightGrayColor];
+    self.layer.borderWidth=numborderWidth;
+    self.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    
 }
 
 /** 减 */
@@ -114,7 +106,7 @@
     
     _numberText.text=[NSString stringWithFormat:@"%ld",(long)[_numberText.text integerValue]-_multipleNum];
     
-    [self callBackResultNumber:_numberText.text];
+    [self callBackResultNumber:_numberText.text.integerValue];
 }
 
 /** 加 */
@@ -127,7 +119,7 @@
         [self shakeAnimation];
     }
     
-    [self callBackResultNumber:_numberText.text];
+    [self callBackResultNumber:_numberText.text.integerValue];
 }
 
 /** 数值变化 */
@@ -161,10 +153,10 @@
         textField.text=[NSString stringWithFormat:@"%ld",(long)(textField.text.integerValue/_multipleNum)*_multipleNum];
     }
     
-    [self callBackResultNumber:textField.text];
+    [self callBackResultNumber:textField.text.integerValue];
 }
 
-- (void)callBackResultNumber:(NSString *)number{
+- (void)callBackResultNumber:(NSInteger)number{
     if (self.resultNumber) {
         self.resultNumber(number);
     }
@@ -225,37 +217,14 @@
 }
 
 /** setter getter */
-- (void)setBaseNum:(NSString *)baseNum{
-    _baseNum=baseNum;
-    [self setView];
+- (void)setShowNum:(NSInteger)showNum{
+    _showNum=showNum;
+    _numberText.text=[NSString stringWithFormat:@"%ld",showNum];
+    [self callBackResultNumber:showNum];
 }
 
 - (void)setMultipleNum:(NSInteger)multipleNum{
     _multipleNum=multipleNum;
-}
-
-- (void)setCanText:(BOOL)canText{
-    _canText=canText;
-    _numberText.userInteractionEnabled=_canText;
-}
-
-- (void)setHidBorder:(BOOL)hidBorder{
-    _hidBorder=hidBorder;
-    [self setView];
-}
-
-- (void)setNumborderColor:(UIColor *)numborderColor{
-    _numborderColor=numborderColor;
-    [self setView];
-}
-
-- (void)setButtonColor:(UIColor *)buttonColor{
-    _buttonColor=buttonColor;
-    [self setView];
-}
-
-- (void)setIsShake:(BOOL)isShake{
-    _isShake=isShake;
 }
 
 - (void)setMinNum:(NSInteger)minNum{
@@ -267,6 +236,58 @@
 
 - (void)setMaxNum:(NSInteger)maxNum{
     _maxNum=maxNum;
+}
+
+
+- (void)setCanText:(BOOL)canText{
+    _canText=canText;
+    _numberText.userInteractionEnabled=_canText;
+}
+
+- (void)setIsShake:(BOOL)isShake{
+    _isShake=isShake;
+}
+
+
+- (void)setHidBorder:(BOOL)hidBorder{
+    _hidBorder=hidBorder;
+    
+    if (hidBorder) {
+        _segmentReduce.backgroundColor=[UIColor clearColor];
+        _segmentAdd.backgroundColor=[UIColor clearColor];
+        self.layer.borderColor=[UIColor clearColor].CGColor;
+    }
+}
+
+- (void)setNumCornerRadius:(CGFloat)numCornerRadius{
+    _numCornerRadius=numCornerRadius;
+    self.layer.masksToBounds=YES;
+    self.layer.cornerRadius=_numCornerRadius;
+}
+
+- (void)setNumBorderColor:(UIColor *)numBorderColor{
+    _numBorderColor=numBorderColor;
+    
+    _segmentReduce.backgroundColor=_numBorderColor;
+    _segmentAdd.backgroundColor=_numBorderColor;
+    self.layer.borderColor=_numBorderColor.CGColor;
+}
+
+- (void)setButtonColor:(UIColor *)buttonColor{
+    _buttonColor=buttonColor;
+    
+    _reduceBtn.backgroundColor=_buttonColor;
+    _addBtn.backgroundColor=_buttonColor;
+}
+
+- (void)setNumTextColor:(UIColor *)numTextColor{
+    _numTextColor=numTextColor;
+    _numberText.textColor=numTextColor;
+}
+
+- (void)setNumTextFont:(UIFont *)numTextFont{
+    _numTextFont=numTextFont;
+    _numberText.font=numTextFont;
 }
 
 

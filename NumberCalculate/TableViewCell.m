@@ -16,8 +16,8 @@
     _numberCalculate.delegate=self;
 }
 
-- (void)resultNumber:(NSString *)number{
-    NSLog(@"%@>>>resultDelegate>>",number);
+- (void)resultNumber:(NSInteger)number{
+    NSLog(@"%ld>>>resultDelegate>>",number);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

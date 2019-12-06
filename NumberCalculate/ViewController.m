@@ -12,6 +12,8 @@
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) NumberCalculate *number;
+
 @end
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
@@ -28,15 +30,22 @@
     remind.text=@"倍数加减（2倍）";
     [self.view addSubview:remind];
     
-    NumberCalculate *number=[[NumberCalculate alloc]initWithFrame:CGRectMake(50, 100, 150, 50)];
-    number.baseNum=@"2";
-    number.multipleNum=2;//数值增减基数（倍数增减） 默认1的倍数增减
-    number.minNum=2;
-    number.maxNum=10;//最大值
-    [self.view addSubview:number];
-    number.resultNumber = ^(NSString *number) {
-        NSLog(@"%@>>>resultBlock>>",number);
+    _number=[[NumberCalculate alloc]initWithFrame:CGRectMake(50, 100, 150, 50)];
+    _number.numCornerRadius=15;
+    _number.showNum=2;
+    _number.multipleNum=2;//数值增减基数（倍数增减） 默认1的倍数增减
+    _number.minNum=2;
+    _number.maxNum=10;//最大值
+    [self.view addSubview:_number];
+    _number.resultNumber = ^(NSInteger number) {
+        NSLog(@"%ld>>>resultBlock>>",number);
     };
+    
+    
+    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(_number.frame)+30, 30, 30)];
+    btn.backgroundColor=[UIColor blueColor];
+    [btn addTarget:self action:@selector(changeNumber) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
     
     /**************************************************************/
     UILabel *xib=[[UILabel alloc]initWithFrame:CGRectMake(50, SCREEN_HEIGHT/2-30, 200, 20)];
@@ -65,6 +74,10 @@
     return cell;
 }
 
+
+- (void)changeNumber{
+    _number.showNum=6;
+}
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

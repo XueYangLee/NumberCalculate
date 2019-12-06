@@ -33,6 +33,9 @@
 /** 最大值  默认99999 */
 @property (nonatomic, assign) NSInteger maxNum;
 
+/** 返回当前显示的数值 */
+- (NSInteger)currentNumber;
+
 
 
 /** 数字框是否可以手动输入  默认可以 */

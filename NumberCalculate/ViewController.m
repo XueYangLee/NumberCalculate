@@ -77,6 +77,7 @@
 
 - (void)changeNumber{
     _number.showNum=6;
+    NSLog(@"%ld>>当前显示",_number.currentNumber);
 }
 
 

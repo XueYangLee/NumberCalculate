@@ -238,6 +238,11 @@
     _maxNum=maxNum;
 }
 
+- (NSInteger)currentNumber{
+    return _numberText.text.integerValue;
+}
+
+
 
 - (void)setCanText:(BOOL)canText{
     _canText=canText;
@@ -247,6 +252,7 @@
 - (void)setIsShake:(BOOL)isShake{
     _isShake=isShake;
 }
+
 
 
 - (void)setHidBorder:(BOOL)hidBorder{

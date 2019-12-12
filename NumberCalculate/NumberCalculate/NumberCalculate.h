@@ -33,6 +33,9 @@
 /** 最大值  默认99999 */
 @property (nonatomic, assign) NSInteger maxNum;
 
+/** 重置显示数值并回传结果 */
+@property (nonatomic, assign) NSInteger resetShowNum;//场景：商品sku切换时  A商品最高sku高于B商品 选择A商品并将数量设置为A商品的最高sku 切换到B商品时需重置当前所选数量至B商品的最高sku并回传结果
+
 /** 返回当前显示的数值 */
 - (NSInteger)currentNumber;
 

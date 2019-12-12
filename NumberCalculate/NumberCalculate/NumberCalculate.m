@@ -220,7 +220,12 @@
 - (void)setShowNum:(NSInteger)showNum{
     _showNum=showNum;
     _numberText.text=[NSString stringWithFormat:@"%ld",showNum];
-    [self callBackResultNumber:showNum];
+}
+
+- (void)setResetShowNum:(NSInteger)resetShowNum{
+    _resetShowNum=resetShowNum;
+    _numberText.text=[NSString stringWithFormat:@"%ld",resetShowNum];
+    [self callBackResultNumber:resetShowNum];
 }
 
 - (void)setMultipleNum:(NSInteger)multipleNum{
